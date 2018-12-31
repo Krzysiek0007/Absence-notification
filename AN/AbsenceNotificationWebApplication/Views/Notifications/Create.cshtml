@@ -1,0 +1,74 @@
+﻿@model AbsenceNotificationWebApplication.Models.Notification
+
+@{
+                /**/
+
+                ViewBag.Title = "Send";
+}
+
+<h2>Send</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Notification</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.SenderId, new { @Value = "0" })
+
+        <div class="form-group">
+            @Html.Label("Recipient", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RecipientId, (SelectList)ViewBag.recipientId, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Absence category", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AbsenceCategoryId, (SelectList)ViewBag.absenceCategoryId, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @maxlength = 500, @class = "form-control" } })
+                <br />
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Date from", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateFrom, new { htmlAttributes = new { type = "datetime-local", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateFrom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Date to", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateTo, new { htmlAttributes = new { type = "datetime-local", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateTo, "", new { @class = "text-danger" })
+                <p class="text-danger">@ViewBag.dateError</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Show all of my notifications", "Index")
+</div>
+

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AbsenceNotificationAdminWebApplication.Models.NotificationViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExportView</title>
+</head>
+<body>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Login)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsencePeriod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceDuration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceCategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceDescription)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Login)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AbsencePeriod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AbsenceDuration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AbsenceCategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AbsenceDescription)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

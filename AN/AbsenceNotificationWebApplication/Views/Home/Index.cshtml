@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (ViewBag.adminMenu == "Yes")
+{
+    <div class="jumbotron">
+
+        <h1>Welcome Admin.</h1>
+        <h3>
+            <li>@Html.ActionLink("Manage Role", "Index", "Role")</li>
+            <li>@Html.ActionLink("Send notification", "Create", "Notifications")</li>
+            <li>@Html.ActionLink("Show all of my notifications", "Index", "Notifications")</li>
+        </h3>
+    </div>
+}
+else if (ViewBag.displayAbsenceForm == "Yes")
+{
+    <div class="jumbotron">
+        <h2>Welcome @User.Identity.Name</h2>
+        <h3>
+            <li>@Html.ActionLink("Send notification", "Create", "Notifications")</li>
+            <li>@Html.ActionLink("Show all of my notifications", "Index", "Notifications")</li>
+        </h3>
+    </div>
+}
+else
+{
+    <div class="jumbotron">
+        <h1>Welcome</h1>
+        <p class="lead">
+            This application allows the employees to post the
+            times of remote work at home and the absences during regular office hours (8-16).
+        </p>
+        <p class="lead">
+            In order to notify your manager please log in and send notification.
+        </p>
+    </div>
+}
